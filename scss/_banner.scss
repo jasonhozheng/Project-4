@@ -1,0 +1,151 @@
+// Banner Styles
+.banner {
+    position: relative;
+    z-index: 800;
+
+    img {
+        animation: fadeIn 1s ease both;
+    }
+
+    @include mq($phone) {
+        
+        img {
+            height: 240px;
+            object-fit: cover;
+        }
+
+    }
+
+}
+
+.info-box {
+    position: absolute;
+    top: 70px;
+	left: 80px;
+	color: white;
+    animation: slideInLeft 1s 0.5s 1 ease both;
+    
+    h1 {
+        margin-bottom: 0.2em;
+    }
+
+    .year {
+        font-weight: 400;
+    }
+
+    .model {
+        font-size: 2.3em;
+        font-weight: 400;
+    }
+
+    .price {
+        font-size: 1.4em;
+
+        strong {
+            font-size: 1.2em;
+        }
+    }
+
+    a {
+        color: white;
+    }
+
+    .ratings {
+        display: flex;
+        margin-top: rem(10);
+        margin-bottom: rem(10);
+    }
+
+    .stars {
+        position: relative;
+        width: rem(100);
+        margin-right: rem(5);
+        height: rem(20);
+    }
+
+    .star-base,
+    .star-actual {
+        position: absolute;
+        top: 0;
+        left: 0;
+        line-height: rem(20);
+    }
+
+    .star-base {
+        color: $site-stars-base-color;
+    }
+
+    .star-actual {
+        color: $site-stars-color;
+        width: 78%;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .review-number {
+        line-height: rem(20);
+    }
+
+    @include mq($tablet-landscape) {
+        top: 60px;
+        font-size: 0.9em;
+    }
+
+    @include mq($tablet-landscape-medium) {
+        font-size: 0.8em;
+
+        .price {
+            margin-bottom: rem(10);
+        }
+
+        .ratings {
+            display: none;
+        }
+
+    }
+
+    @include mq($tablet-portrait-medium) {
+        font-size: 0.7em;
+
+        .price {
+            display: none;
+        }
+
+    }
+
+    @include mq($phone-wide) {
+        top: 15px;
+        left: 20px;
+    }
+
+    @include mq($phone) {
+        top: 0;
+        left: 10px;
+    }
+
+}
+
+// Banner Image Animation Keyframes 
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	
+	to {
+		opacity: 1;
+	}
+}
+
+// Info Box Animation Keyframes
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+	opacity: 0;
+    visibility: visible;
+  }
+
+  to {
+    transform: translatX(0);
+ 	opacity: 1;
+  }
+}

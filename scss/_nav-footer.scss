@@ -1,0 +1,48 @@
+// Footer Nav Styles
+.footer-nav {
+    
+    display: flex;
+    justify-content: center;
+
+    ul {
+        display: flex;
+        @include flatten(true);
+    }
+
+    a {
+        display: block;
+        color: $text-color-footer;
+        text-decoration: none;
+        padding: 0 rem(20);
+        border-right: 1px solid $text-color-footer;
+
+        @at-root .footer-nav li:last-child a {
+            border-right: none;
+        }
+
+        #{$link-hover-selector} {
+            color: $text-color-footer-nav-hover;
+            text-decoration: underline;
+        }
+
+    }
+
+    @include mq($phone-wide) {
+        
+        a {
+            font-size: 0.9em;
+            padding: 0 rem(10);
+        }
+
+    }
+
+    @include mq($phone) {
+
+        a {
+            font-size: 0.8em;
+            padding: 0 rem(5);
+        }
+
+    }
+
+}
