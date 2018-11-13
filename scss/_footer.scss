@@ -1,23 +1,261 @@
-// Footer Styles
-footer {
-    background-color: $bg-footer-color;
-    border-top: 1px solid $footer-border-color;
-    padding-top: rem(40);
-    padding-bottom: rem(20);
-    color: $text-color-footer;
-
-    .copyright {
-        text-align: center;
-        margin-top: rem(40);
+@mixin beforeafter {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+  
+  body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    background: ghostwhite url('');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .background {
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    right: -50px;
+    bottom: -50px;
+    background-image: url('http://bucket.stephencaver.com/beast.jpg');
+    background-size: cover;
+    background-position: center center;
+    opacity: .4;
+    filter: blur(20px);
+  }
+  
+  .player {
+    width: 20em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    backface-visibility: hidden;
+    
+    .player-in {
+      border-radius: 1em;
+      box-shadow: 0 0 3px 0 rgba(0,0,0,.4);
+      background: white;
+      position: relative;
+      z-index: 3;
+      overflow: hidden;
     }
-
-    @include mq($phone-wide) {
-
-        .copyright {
-            font-size: 0.9em;
-            margin-top: rem(20);
-        }
-
+    
+    &:after,
+    &:before{
+      @include beforeafter;
+      top: auto;
+      bottom: 10px;
+      left: 5px;
+      height: 20px;
+      width: 75%;
+      right: auto;
+      z-index: 2;
+      box-shadow: 0 10px 20px 0 rgba(0,0,0,.4);
+      transform: rotate(-2deg);
+      border-radius: 1em;
     }
-
-}
+    &:before {
+      transform: rotate(2deg);
+      right: 5px;
+      left: auto;
+    }
+  }
+  
+  .playerCover {
+    font-size: .75em;
+    position: relative;
+    height: 0;
+    padding-bottom: 100%;
+    background: ghostwhite;
+    box-shadow: inset 0 -6px 6px -5px rgba(0,0,0,.1);
+    
+    img {
+      transition: all .5s ease;
+      position: absolute;
+      width: 100%;
+      z-index: 2;
+    }
+    
+    &:hover {
+      img { transform: translate(0, -2.75em); }
+      .playBar--inner {
+        opacity: 0;
+      }
+    }
+  }
+  
+  .playerCover--controls {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    
+    div {
+      display: inline-block;
+      padding: .6em;
+    }
+    
+    a {
+      text-decoration: none;
+      color: gray;
+      display: block;
+      padding: .3em .8em;
+      border-radius: 10px 10px;
+      
+      &:hover {
+        background: transparentize(lightgray,.8);
+        box-shadow: inset 0 0 10px 0 rgba(0,0,0,.2);
+      }
+    }
+  }
+  
+  .playBar {
+    height: 5px;
+    background: transparentize(white,.5);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+  }
+  
+  .playBar--inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 5px;
+    width: 25%;
+    background: dodgerblue; 
+    z-index: 6;
+    opacity: 1;
+    transition: all .25s ease;
+  }
+  
+  .player--title {
+    font-size: 1em;
+    text-align: center;
+    margin: 1.25em 0 0;
+    font-weight: 400;
+    color: rgba(0,0,0,.75);
+  }
+  
+  .player--artist {
+    text-align: center;
+    margin: 0;
+    color: rgba(0,0,0,.35);
+    font-size: 0.75em;
+  }
+  
+  .playerControls {
+    text-align: center;
+    margin: 1em 0 1.5em;
+    div {
+      display: inline-block;
+    }
+  }
+  
+  .playerControls--playPause {
+    height: 50px;
+    width: 50px;
+    background: lightgray;
+    border-radius: 100%;
+    position: relative;
+    
+    a {
+      text-indent: -9999em;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+    
+    a:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: block;
+      width: 0; 
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-left: 15px solid white;
+      transform: translate(-40%, -50%);
+    }
+  }
+  .playerControls--prev,
+  .playerControls--next {
+    text-indent: -9999em;
+    height: 30px;
+    width: 30px;
+    background: lightgray;
+    border-radius: 100%;
+    position: relative;
+    top: -10px;
+    margin: 0 1em;
+    
+    a {
+      text-indent: -9999em;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+    
+    &:before,
+    &:after {
+      position: absolute;
+      content: '';
+      display: block;
+      height: 0;
+      width: 0;
+    }
+  }
+  
+  .playerControls--prev {
+    &:before,
+    &:after{
+      border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-right: 7px solid white;
+      top: 50%;
+      left: 50%;
+    }
+    &:before {
+      transform: translate(-100%,-50%);
+    }
+    &:after {
+      transform: translate(-20%,-50%);
+    }
+   
+  }
+  
+  .playerControls--next {
+    &:before,
+    &:after{
+      border-top: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-left: 7px solid white;
+      top: 50%;
+      left: 50%;
+    }
+    &:before {
+      transform: translate(-80%,-50%);
+    }
+    &:after {
+      transform: translate(0%,-50%);
+    }
+   
+  }
