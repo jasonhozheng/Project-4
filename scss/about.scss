@@ -3,6 +3,8 @@
 {
     display: grid;
     grid-gap: 7px;
+    padding-top: 10%;
+    padding-bottom: 10%;
 }
 .picture, .about-me-paragraph, .inspirations
 {
@@ -15,7 +17,7 @@
 }
 .about-me-paragraph
 {
-    grid-column: 2 / 5;
+    grid-column: 2 / 8;
     grid-row: 1 / 8;
 }
 .inspirations
