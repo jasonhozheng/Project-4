@@ -1,1 +1,42 @@
 // Main Nav Styles
+ul
+{
+    display: flex;
+    list-style-type: none;
+    line-height: 3em;
+}
+nav
+{
+    width: 25%;
+}
+.header-wrapper
+{
+    width: 80%;
+    margin: auto;
+}
+header li
+{
+    margin-left: 2%;
+}
+a
+{
+    color: $font-color;
+    font-family: $header-font;
+    text-decoration: none;
+}
+.header-wrapper
+{
+    display: flex;
+    justify-content: space-between;
+    background-color: $header-color;
+    
+}
+header
+{
+    background-color: $header-color;
+    border-bottom: solid 4px $font-color;
+}
+.btn-menu
+{
+    display: none;
+}

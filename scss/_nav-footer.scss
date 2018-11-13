@@ -1,1 +1,25 @@
 // Footer Nav Styles
+.footer-width
+{
+    display: flex;
+    justify-content: space-between;
+    background-color: $footer-color;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+.fab
+{
+    color: $font-color;
+    margin: .5em;
+}
+footer
+{
+    background-color: $footer-color;
+    border-top: solid 4px $font-color;
+}
+footer img
+{
+    width: 50%;
+    height: auto;
+}
