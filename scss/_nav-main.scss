@@ -35,6 +35,9 @@ header
 {
     background-color: $header-color;
     border-bottom: solid 4px $font-color;
+    position: fixed;
+    z-index: 200;
+    width: 100%;
 }
 .btn-menu
 {
