@@ -1,6 +1,11 @@
 // Typography Styles
 h1, h2, h3
 {
-    font-family: 'questrial';
+    font-family: $header-font;
+    color: $font-color;
+}
+p
+{
+    font-family: $paragraph-font;
     color: $font-color;
 }
